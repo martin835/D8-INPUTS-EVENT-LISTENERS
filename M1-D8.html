@@ -13,6 +13,7 @@
     </style>
   </head>
   <body>
+
     <div>
       <button onclick="changeTitle('Something else')">Change title(h1)</button>
       <button onclick="addClassToTitle()">Add class myHeading to the title(h1)</button>
@@ -20,9 +21,14 @@
       <button onclick="changeUrls()">Change all links to google.com</button>
       <button onclick="addToTheSecond('I was created out of the air :) :):) ')">Add new list item in the second unordered list</button>
       <button onclick="addParagraph('I am new paragraph and I\'ve been created with JS function')">Add a second paragraph to the first div</button>
-      
-      
-      <h1>This is the title of the page</h1>
+      <button onclick="firstUlDisappear()">Hide first UL</button>
+      <button onclick="paintItGreen()">Paint all UL in green</button>
+    </div>
+    
+  <main>
+
+    <div>    
+      <h1 onclick="makeItClickable()">This is the title of the page</h1>
       <h2>This is the subtitle of the page</h2>
     </div>
     <p>This p should not be changed!!!</p>
@@ -66,6 +72,11 @@
         questions!
       </h2>
     </div>
+  </main>
+
+  <footer onclick="changeFooterText('I\'ve changed! But I cannot change back yet :(')">
+    I am a footer text. Click on me and I will change! 
+  </footer>
     <script>
       /* EXERCISE 1
        Write a function for changing the title of the document in something else.
@@ -130,7 +141,6 @@
        Write a function for adding a second paragraph to the first div.
       */
 
-      
 
       const addParagraph = function (content) {
         let firstDivWithPNode = document.querySelector(".first-div-with-p")
@@ -142,9 +152,10 @@
       /* EXERCISE 7
        Write a function for making the first unordered list disappear.
       */
-
+   
       const firstUlDisappear = function () {
-        //
+        let firstUlNode = document.querySelector("ul:first-of-type")
+        firstUlNode.style.visibility = "hidden";
       };
 
       /* EXERCISE 8
@@ -152,40 +163,52 @@
       */
 
       const paintItGreen = function () {
-        //
+        let allULsNode = document.querySelectorAll("ul")
+
+        for (let i = 0; i < allULsNode.length; i++) {
+          allULsNode[i].style.backgroundColor = "green";          
+        }        
       };
 
       /* EXERCISE 9
        Make the heading of the page change color every time the user clicks on it.
       */
+     
 
       const makeItClickable = function () {
-        //
+        let h1Node = document.querySelector("h1")
+        h1Node.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16)
       };
 
       /* EXERCISE 10
        Change the footer text with something else when the user clicks on it.
       */
-
-      const changeFooterText = function () {
-        //
+      
+      const changeFooterText = function (newFooterText) {
+        let footerNode = document.querySelector("footer")
+        footerNode.innerText = newFooterText
       };
 
       /* EXERCISE 11
        Attach an event listener to the input field in the page for console logging its value just after any keystroke.
       */
-
-      const inputField = document.getElementById("input-field");
-      // ...
-
+      
+      const consoleLogInput = function (e) {
+        console.log(e.target.value)
+      }
+      
+      let inputField = document.getElementById("input-field");
+      inputField.addEventListener("keyup", consoleLogInput)
+      
+      
       /* EXERCISE 12
        Create a welcome alert message when the page successfully loads.
       */
 
       window.onload = function () {
-        //
+        alert('Succescully loaded')
       };
-
+ 
       /* EXERCISE 13
        Use HTML5 tags to properly provide semantic meaning to the different portions of the page.
       */
