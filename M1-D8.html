@@ -5,14 +5,28 @@
       .myHeading {
         color: red;
       }
+
+      button {
+        margin:  5px;
+      }
+
     </style>
   </head>
   <body>
     <div>
+      <button onclick="changeTitle('Something else')">Change title(h1)</button>
+      <button onclick="addClassToTitle()">Add class myHeading to the title(h1)</button>
+      <button onclick="changePcontent()">Change p children of div</button>
+      <button onclick="changeUrls()">Change all links to google.com</button>
+      <button onclick="addToTheSecond('I was created out of the air :) :):) ')">Add new list item in the second unordered list</button>
+      <button onclick="addParagraph('I am new paragraph and I\'ve been created with JS function')">Add a second paragraph to the first div</button>
+      
+      
       <h1>This is the title of the page</h1>
       <h2>This is the subtitle of the page</h2>
     </div>
-
+    <p>This p should not be changed!!!</p>
+    
     <div>
       <hr />
 
@@ -30,8 +44,9 @@
 
       <a href="strive.school">This link goes to Strive School</a>
 
-      <div>
+      <div class="first-div-with-p">
         <p>This text is just for the exercise</p>
+        
       </div>
 
       <div>
@@ -43,8 +58,9 @@
       </div>
     </div>
 
-    <div>
+    <div class="second-div-with-p">
       <p>And this text is just for the exercise too!</p>
+      <p>This p should be changed !!</p>
       <h2 style="color: red">
         Save this page on your computer and open it with VSCode to get the
         questions!
@@ -54,33 +70,49 @@
       /* EXERCISE 1
        Write a function for changing the title of the document in something else.
       */
-
+   
       const changeTitle = function (newTitle) {
-        //
+        let h1Nodes = document.getElementsByTagName("h1")
+        h1Nodes[0].innerHTML = newTitle
       };
 
       /* EXERCISE 2
        Write a function for changing the class of the title of the page in "myHeading".
       */
+      
 
       const addClassToTitle = function () {
-        //
+        let h1Node = document.getElementsByTagName("h1")
+        h1Node[0].classList.add("myHeading")
       };
 
       /* EXERCISE 3
        Write a function for changing the text of only the p which are children of a div.
       */
 
+      let pChildrenofDivNodes = document.querySelectorAll("div p")
+
       const changePcontent = function () {
-        //
+        let pChildrenofDivNodes = document.querySelectorAll("div p")
+
+        for (let i = 0; i < pChildrenofDivNodes.length; i++) {
+          pChildrenofDivNodes[i].innerHTML = "This text has been changed by the function"
+        }
+        
       };
 
       /* EXERCISE 4
        Write a function for changing the href property of every link to https://www.google.com
       */
 
+        
+
       const changeUrls = function () {
-        //
+        let linkNode = document.querySelectorAll("a")
+
+        for (let i = 0; i < linkNode.length; i++) {
+          linkNode[i].href = "https://www.google.com"          
+        }
       };
 
       /* EXERCISE 5
@@ -88,15 +120,23 @@
       */
 
       const addToTheSecond = function (content) {
-        //
+        let newLi = document.createElement("li")
+        newLi.innerHTML = content 
+        let secondUl = document.getElementById("secondList")
+        secondUl.appendChild(newLi)
       };
 
       /* EXERCISE 6
        Write a function for adding a second paragraph to the first div.
       */
 
+      
+
       const addParagraph = function (content) {
-        //
+        let firstDivWithPNode = document.querySelector(".first-div-with-p")
+        let newPar = document.createElement("p")
+        newPar.innerHTML = content
+        firstDivWithPNode.appendChild(newPar)
       };
 
       /* EXERCISE 7
