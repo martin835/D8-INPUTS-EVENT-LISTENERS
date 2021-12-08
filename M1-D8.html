@@ -85,6 +85,7 @@
       const changeTitle = function (newTitle) {
         let h1Nodes = document.getElementsByTagName("h1")
         h1Nodes[0].innerHTML = newTitle
+        document.title = newTitle
       };
 
       /* EXERCISE 2
@@ -205,10 +206,10 @@
        Create a welcome alert message when the page successfully loads.
       */
 
-      window.onload = function () {
+     /*  window.onload = function () {
         alert('Succescully loaded')
       };
- 
+  */
       /* EXERCISE 13
        Use HTML5 tags to properly provide semantic meaning to the different portions of the page.
       */
